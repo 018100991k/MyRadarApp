@@ -1,0 +1,62 @@
+/* sidebar.component.css */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  height: 100vh;
+  background: linear-gradient(to right, #0a1e3f, #086788);
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s; /* Agregamos transición para un cambio suave de ancho */
+  align-items: center; /* Alinea los elementos en el centro verticalmente */
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.logo-toggle-container {
+  display: grid;
+  grid-template-columns: 4fr 0.5fr;
+  margin-bottom: 2vh;
+}
+
+.logo-container {
+  margin-right: 4vh;
+}
+
+.logo {
+  width: 100%;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button-container button {
+  margin: 3vh 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2vh;
+  display: flex;
+  align-items: center; /* Alinea los elementos en el centro verticalmente */
+}
+
+i {
+  font-size: 4vh;
+}
+.text {
+  margin-left: 3vh;
+}

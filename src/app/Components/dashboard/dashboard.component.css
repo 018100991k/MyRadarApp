@@ -1,0 +1,28 @@
+/* main.component.css o cualquier otro archivo de estilos */
+/* app.component.css o tu componente principal que contiene la barra lateral y el router-outlet */
+/* main.component.css */
+/* .containerInicio {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #0a1e3f, #086788, #07a0c3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+} */
+
+.content {
+  display: grid;
+}
+.container {
+  display: grid;
+  grid-template: auto 0 1fr/ 20 80vw;
+}
+.router {
+  margin-top: 3vh;
+}

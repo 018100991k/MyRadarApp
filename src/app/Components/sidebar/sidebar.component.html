@@ -1,0 +1,41 @@
+<!-- sidebar.component.html -->
+<!-- sidebar.component.html -->
+<div class="sidebar" [ngStyle]="{ width: sidebarWidth }">
+  <div class="logo-toggle-container">
+    <div class="logo-container" *ngIf="showText">
+      <img class="logo" src="../../../assets/img/logotipo.png" alt="Logo" />
+    </div>
+    <button type="button" class="toggle-btn" (click)="toggleTextVisibility()">
+      <i class="fas fa-align-justify"></i>
+    </button>
+  </div>
+  <div class="text-container">
+    <hr />
+    <div class="button-container">
+      <button (click)="showContent('img1', 'btn1')" routerLink="admin">
+        <i class="fas fa-user-edit"></i>
+        <p *ngIf="showText" class="text">administrar Usuarios</p>
+      </button>
+      <button (click)="showContent('img5', 'btn5')" routerLink="filtrar">
+        <i class="fa-solid fa-chart-line"></i>
+        <p *ngIf="showText" class="text">visualizacion de segmentos</p>
+      </button>
+      <button (click)="showContent('img5', 'btn5')" routerLink="adminDocs" >
+        <i class="far fa-pen-to-square"></i>
+        <p *ngIf="showText" class="text">administrar Documentos</p>
+      </button>
+      <button (click)="showContent('img2', 'btn2')">
+        <i class="fas fa-piggy-bank"></i>
+        <p *ngIf="showText" class="text">Ahorros</p>
+      </button>
+      <button (click)="showContent('img3', 'btn3')">
+        <i class="fas fa-coins"></i>
+        <p *ngIf="showText" class="text">Saldos y Movimientos</p>
+      </button>
+      <button (click)="showContent('img4', 'btn4')">
+        <i class="fas fa-truck"></i>
+        <p *ngIf="showText" class="text">Reclamos</p>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+* {
+  border: 0;
+  margin: 0;
+  border-radius: 5vh;
+  object-fit: contain;
+  font-size: 5vh;
+  text-align: center;
+  font-weight: bold;
+}
+
+body {
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  height: 60vh;
+  width: 70vw;
+}
+
+.image-counter {
+  outline: none;
+  z-index: 2;
+}
+
+.c-img {
+  display: flex;
+  align-items: center;
+  height: 60%;
+  cursor: pointer;
+  margin: 10vh 0;
+  position: relative;
+}
+
+.side-images {
+  opacity: 0.6;
+  width: 50vh;
+  height: 30vh;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: absolute;
+  top: 0;
+  /* border: 1px solid red; */
+}
+
+.selected-image {
+  height: 30vh;
+  width: 50vh;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* border: 1px solid black; */
+  background-color: white;
+}
+
+.left-image {
+  left: -40vh; /* Ajuste para que la imagen esté fuera del contenedor */
+}
+
+.right-image {
+  right: -40vh; /* Ajuste para que la imagen esté fuera del contenedor */
+}
+
+.image-selector {
+  display: flex;
+}
+
+.image-dot {
+  width: 2.5vh;
+  height: 2.5vh;
+  border-radius: 50%;
+  background-color: #888;
+  margin: 0 0.5vh;
+  z-index: 2;
+  opacity: 0.6;
+}

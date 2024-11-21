@@ -1,0 +1,34 @@
+<div class="container">
+  <div
+    #imageCounter
+    class="image-counter"
+    contenteditable="true"
+    (keydown)="cambiarImagenPorContador($event)"
+  ></div>
+
+  <div
+    #cImg
+    class="c-img"
+    (mouseover)="pausarRotacion()"
+    (mouseout)="reanudarRotacion()"
+  >
+    <img class="side-images left-image" (click)="rotarImagen(-1)" />
+    <img
+      class="selected-image"
+      (click)="abrirEnlace()"
+      (mouseover)="escalarImagen()"
+      (mouseout)="restaurarEscala()"
+    />
+    <img class="side-images right-image" (click)="rotarImagen(1)" />
+  </div>
+
+  <div #imageSelector class="image-selector">
+    <ng-container *ngFor="let image of imagesData; let i = index">
+      <div
+        class="image-dot"
+        [style.background-color]="i === currentIndex ? 'red' : '#888'"
+        (click)="seleccionarImagen(i)"
+      ></div>
+    </ng-container>
+  </div>
+</div>

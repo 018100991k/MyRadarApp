@@ -1,0 +1,142 @@
+* {
+  /* resetear valores por defecto */
+  margin: 0;
+  padding: 0;
+
+  /* efectos */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out,
+    transform 0.3s ease-in-out;
+
+  /* centrar */
+  font-size: 2.5vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* quitar efectos */
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  letter-spacing: 1px;
+}
+.containerInicio {
+  /* height: 100vh;*/
+
+  background: #f5f5f5;
+}
+
+.logo {
+  height: 7vh;
+  /* background: #fff; */
+}
+
+.navbar {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #0a1e3f, #086788, #07a0c3);
+  display: flex;
+  flex-direction: column;
+  /* border-radius: 0 0 3vh 3vh; */
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  padding: 1vh;
+}
+
+.btn {
+  padding: 1vh;
+  border: 1px solid black;
+  border-radius: 1vh;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnUser {
+  /* Añade estilos de borde redondeado para hacer que el botón se vea como un círculo */
+  border-radius: 50%;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out,
+    transform 0.1s ease-in-out;
+  font-size: 0.1vh;
+}
+
+.btn:hover {
+  background-color: #000;
+  color: #fff;
+  transform: scale(1.3); /* Scale on hover */
+  padding: 1.5vh;
+}
+
+.bottom {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  /* background: linear-gradient(to right, #008800, #166b11, #00AA00, #166b11, #008800); */
+  background: rgb(45, 172, 45);
+  width: 100%;
+  justify-content: space-around;
+  /* border-radius: 0 0 3vh 3vh; */
+  z-index: 2;
+}
+
+li {
+  margin: 1vh;
+  padding: 1vh;
+  border-radius: 5px;
+}
+
+.escalar {
+  display: flex;
+}
+
+.escalar:hover {
+  transform: scale(1.5); /* Scale on hover */
+}
+
+a {
+  color: #e3d1a3;
+}
+
+a:hover {
+  color: #000;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  /* border-radius: 2vh; */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1; /* Asegúrate de que el elemento padre tenga un z-index definido */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgb(45, 172, 45);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 1vh;
+  transform: translate(-50%); /* Ajusta la posición al centro */
+  top: 100%; /* Lleva el contenido hacia el centro vertical */
+  left: 50%; /* Lleva el contenido hacia el centro horizontal */
+  z-index: 2; /* Asegúrate de que el menú desplegable esté por encima de la imagen */
+}
+
+.dropdown-content ul {
+  padding: 1vh 3vh; /* Ajusta el espaciado interno de la sublista */
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover li a:hover {
+  /* background-color: #3cce46; */
+  /* border-radius: 1vh; */
+  opacity: 0.5;
+}

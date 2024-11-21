@@ -1,0 +1,38 @@
+<!-- <div class="containerInicio"> -->
+<nav class="navbar">
+  <div class="top">
+    <!-- <p class="logo">COPAC</p> -->
+    <i
+      [class]="
+        isBottomVisible
+          ? 'fa-solid fa-angles-up escalar'
+          : 'fa-solid fa-angles-down escalar'
+      "
+      (click)="toggleBottomVisibility()"
+    ></i>
+    <i
+      [class]="bloked ? 'fas fa-lock escalar' : 'fas fa-lock-open escalar'"
+      (click)="blockBottomVisibility()"
+    ></i>
+    <p>bienvenido {{ dataUser?.nombre }} {{ dataUser?.apellido }}</p>
+    <button class="btn btnUser" (click)="logout()">
+      <i class="fa-solid fa-user-tie user"></i>
+    </button>
+  </div>
+  <ul class="bottom" *ngIf="isBottomVisible">
+    <li class="dropdown">
+      <a href="#" class="productos escalar">Productos</a>
+      <div class="dropdown-content">
+        <ul>
+          <li><a href="#" class="ahorros escalar">Ahorros</a></li>
+          <li><a href="#" class="creditos escalar">Créditos</a></li>
+        </ul>
+      </div>
+    </li>
+    <li><a href="#" class="contacto escalar">Contáctanos</a></li>
+    <li>
+      <a href="#" class="ubicanos escalar" routerLink="/ubicanos">Ubícanos</a>
+    </li>
+  </ul>
+</nav>
+<!-- </div> -->

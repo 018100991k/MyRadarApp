@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-transform: capitalize;
+  font-size: 2vh;
+}
+
+.busqueda {
+  background-color: #f2f2f2;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.filtrosContainer {
+  display: flex;
+}
+
+.seleccionables,
+.checkeables {
+  flex: 1;
+  padding: 3vh;
+}
+
+.seleccionables {
+  flex: 40vw;
+  border-right: 1px solid #948e8e;
+  /* Divide en 2 columnas para seleccionables */
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 5px;
+}
+
+/* Divide en 5 columnas para checkeables */
+.checkeables {
+  flex: 60vw;
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr);
+  gap: 1vh;
+}
+
+.checkbox-container {
+  background-color: #eae3e3; /* Color de fondo gris para el contenedor */
+  border-radius: 5px; /* Bordes redondeados */
+  margin-bottom: 5px; /* Espaciado inferior entre elementos */
+  display: flex;
+  align-items: center;
+  padding: 1vh; /* Ajusta el padding según sea necesario */
+  position: relative;
+  width: auto;
+}
+
+.checkeables input[type="checkbox"] {
+  width: 16px; /* Ajusta el ancho según sea necesario */
+  height: 16px; /* Ajusta la altura según sea necesario */
+  margin-right: 5px; /* Espaciado derecho entre el checkbox y el texto */
+}
+
+.checkbox-container:hover {
+  background: none;
+}
+.checkbox-container:hover::after {
+  content: "";
+  /* Contenido vacío para la línea */
+  position: absolute;
+  /* Posición absoluta en relación con el elemento padre */
+  left: 0;
+  /* Alinea la línea desde la izquierda del elemento padre */
+  bottom: -2px;
+  /* Posiciona la línea 5px por debajo del borde inferior */
+  width: 100%;
+  /* Ancho al 100% del elemento padre */
+  height: 2px;
+  /* Grosor de la línea */
+  background-color: #333;
+  /* Color de la línea */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Sombra bajo la línea */
+}
+.space {
+  margin-right: 1vh;
+}
+
+.contenedorGraficos {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 3vh;
+}
+
+.contenedorOpciones {
+  display: grid;
+  justify-content: center;
+  grid-gap: 1vh;
+  align-items: center;
+  grid-template: auto / repeat(6, 1fr);
+  grid-auto-flow: row wrap;
+}
+
+.grafico {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

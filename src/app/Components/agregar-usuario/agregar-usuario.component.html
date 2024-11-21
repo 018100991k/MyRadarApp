@@ -1,0 +1,411 @@
+<div class="wrapper" *ngIf="!loading">
+  <!-- <img class="imgContrasena" src="../../../assets/img/registro.png" alt="" /> -->
+  <div class="login">registro de datos</div>
+
+  <form
+    [formGroup]="agregarUsuario"
+    (ngSubmit)="AgregarUsuario()"
+    class="columns"
+  >
+    <!-- Columna 1 -->
+    <div class="column">
+      <!-- Usuario ID -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="string"
+          id="usuarioID"
+          formControlName="usuarioID"
+          readonly
+        />
+        <label for="usuarioID" class="placeholder">Usuario ID</label>
+      </div>
+      <!-- Nombre -->
+
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          required
+        />
+        <label for="nombre" class="placeholder">nombre</label>
+      </div>
+
+      <!-- Apellido -->
+
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="text"
+          id="apellido"
+          formControlName="apellido"
+          required
+        />
+        <label for="apellido" class="placeholder">Apellido</label>
+      </div>
+
+      <!-- Fecha de Nacimiento -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="date"
+          id="fechaNacimiento"
+          formControlName="fechaNacimiento"
+          [min]="calcularFechaMinima()"
+          [max]="calcularFechaMaxima()"
+          required
+        />
+        <label for="fechaNacimiento" class="placeholder"
+          >Fecha de Nacimiento</label
+        >
+      </div>
+
+      <!-- Tipo de Documento de Identidad -->
+
+      <div class="input-container">
+        <select
+          id="tipoDocumentoIdentidad"
+          formControlName="tipoDocumentoIdentidad"
+          class="input-field"
+          required
+        >
+          <option value="dni">dni</option>
+          <option value="ruc">ruc</option>
+          <option value="carnet de extranjeria">carnet de extranjeria</option>
+          <option value="pasaporte">pasaporte</option>
+          <option value="libreta electoral">libreta electoral</option>
+          <!-- Otros valores según sea necesario -->
+        </select>
+        <label for="tipoDocumentoIdentidad" class="placeholder"
+          >Tipo de Documento de Identidad</label
+        >
+      </div>
+
+      <!-- Documento de Identidad -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="text"
+          id="documentoIdentidad"
+          formControlName="documentoIdentidad"
+          required
+        /><label for="documentoIdentidad" class="placeholder"
+          ># de documento de Identidad</label
+        >
+      </div>
+
+      <!-- Nacionalidad -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          list="nacionalidadesList"
+          type="text"
+          id="nacionalidad"
+          formControlName="nacionalidad"
+          required
+        />
+        <label for="nacionalidad" class="placeholder">Nacionalidad</label>
+        <datalist id="nacionalidadesList">
+          <option
+            *ngFor="let nacionalidad of nacionalidades"
+            [value]="nacionalidad"
+          ></option>
+        </datalist>
+      </div>
+
+      <!-- ocupacion -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          list="ocupacionesList"
+          type="text"
+          id="ocupacion"
+          formControlName="ocupacion"
+          required
+        />
+        <label for="ocupacion" class="placeholder">ocupacion</label>
+        <datalist id="ocupacionesList">
+          <option
+            *ngFor="let ocupacion of listaOcupaciones"
+            [value]="ocupacion"
+          ></option>
+        </datalist>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="tel"
+          id="telefono"
+          formControlName="telefono"
+          required
+        />
+        <label for="telefono" class="placeholder">Teléfono</label>
+      </div>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="column">
+      <div class="input-container">
+        <!-- Select para estadoSocio -->
+        <select
+          id="estadoSocio"
+          class="input-field"
+          formControlName="estadoSocio"
+          readonly
+        >
+          <option *ngFor="let estado of estadosSocio" [value]="estado">
+            {{ estado }}
+          </option>
+        </select>
+        <label for="estadoSocio" class="placeholder">Estado de Socio</label>
+      </div>
+
+      <!-- Género -->
+      <div class="input-container">
+        <select
+          id="genero"
+          formControlName="genero"
+          required
+          class="input-field"
+        >
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <!-- Otros valores según sea necesario -->
+        </select>
+        <label for="genero" class="placeholder">Género</label>
+      </div>
+
+      <div class="input-container">
+        <input
+          type="text"
+          id="direccion"
+          name="direccion"
+          class="input-field"
+          placeholder=""
+          formControlName="direccion"
+          required
+        />
+        <label for="direccion" class="placeholder">Dirección</label>
+      </div>
+
+      <!-- email -->
+      <div class="input-container">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="input-field"
+          placeholder=""
+          autocomplete="off"
+          formControlName="email"
+          readonly
+        />
+        <label for="email" class="placeholder">Correo Electrónico</label>
+        <!-- Mostrar mensaje de error específico para email -->
+        <div
+          *ngIf="
+            agregarUsuario.get('email')?.invalid &&
+            agregarUsuario.get('email')?.dirty
+          "
+          class="error-General"
+        >
+          {{ getErrorMessage("email") }}
+        </div>
+      </div>
+
+      <!-- fin email -->
+
+      <!--  password -->
+      <div class="input-container">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="input-field"
+          placeholder=""
+          formControlName="password"
+          #passwordInput
+          readonly
+        />
+
+        <label for="password" class="placeholder">Contraseña</label>
+        <!-- Botón de alternancia de visibilidad -->
+
+        <img
+          src="../../../assets/img/mostrar.png"
+          id="togglePassword"
+          class="mostrarOcultar"
+          alt="Mostrar contraseña"
+          (click)="TogglePasswordVisibility(passwordInput)"
+        />
+      </div>
+
+      <!-- fin password -->
+      <!-- Estado Civil -->
+      <div class="input-container">
+        <select
+          id="estadoCivil"
+          formControlName="estadoCivil"
+          required
+          class="input-field"
+        >
+          <option value="soltero">Soltero</option>
+          <option value="casado">Casado</option>
+          <!-- Otros valores según sea necesario -->
+        </select>
+        <label for="estadoCivil" class="placeholder">Estado Civil</label>
+      </div>
+
+      <!-- Educación -->
+
+      <div class="input-container">
+        <!-- Select para educacion -->
+        <select
+          id="educacion"
+          formControlName="educacion"
+          required
+          class="input-field"
+        >
+          <option *ngFor="let nivel of nivelesEducacion" [value]="nivel">
+            {{ nivel }}
+          </option>
+        </select>
+        <label for="educacion" class="placeholder">Educación</label>
+      </div>
+
+      <!-- Número de Dependientes -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="number"
+          id="numeroDependientes"
+          formControlName="numeroDependientes"
+          [min]="0"
+          required
+        />
+        <label for="numeroDependientes" class="placeholder"
+          >Número de Dependientes</label
+        >
+      </div>
+    </div>
+    <!-- Columna 3 -->
+    <div class="column">
+      <!-- Número de Hijos -->
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="number"
+          id="numeroHijos"
+          formControlName="numeroHijos"
+          [min]="0"
+          required
+        />
+        <label for="numeroHijos" class="placeholder">Número de Hijos</label>
+      </div>
+
+      <!-- Discapacidad -->
+
+      <div class="input-container">
+        <select
+          id="discapacidad"
+          formControlName="discapacidad"
+          required
+          class="input-field"
+        >
+          <option value="ninguna">Ninguna</option>
+          <option value="visual">Visual</option>
+          <option value="auditiva">Auditiva</option>
+          <option value="física">Física</option>
+          <option value="intelectual">Intelectual</option>
+          <option value="otra">Otra</option>
+        </select>
+        <label for="discapacidad" class="placeholder">Discapacidad</label>
+      </div>
+
+      <p class="title">en caso de emergencias</p>
+      <!-- Nombre de Contacto de Emergencia -->
+
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="text"
+          id="nombreContactoEmergencia"
+          formControlName="nombreContactoEmergencia"
+          required
+        /><label for="nombreContactoEmergencia" class="placeholder"
+          >Nombre de Contacto de Emergencia</label
+        >
+      </div>
+
+      <!-- Teléfono de Contacto de Emergencia -->
+
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="tel"
+          id="telefonoContactoEmergencia"
+          formControlName="telefonoContactoEmergencia"
+          required
+        />
+        <label for="telefonoContactoEmergencia" class="placeholder"
+          >Teléfono de Contacto de Emergencia</label
+        >
+      </div>
+
+      <!-- Fecha de Registro -->
+
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="datetime"
+          id="fechaRegistro"
+          formControlName="fechaRegistro"
+          readonly
+        />
+        <label for="fechaRegistro" class="placeholder">Fecha de Registro</label>
+      </div>
+
+      <!-- Fecha de Modificación -->
+
+      <div class="input-container">
+        <input
+          class="input-field"
+          placeholder=""
+          type="datetime"
+          id="fechaModificacion"
+          formControlName="fechaModificacion"
+          readonly
+        />
+        <label for="fechaModificacion" class="placeholder"
+          >Fecha de Modificación</label
+        >
+      </div>
+    </div>
+    <div class="button-container">
+      <!-- Mostrar mensaje de error si el formulario no está completo -->
+      <div *ngIf="!agregarUsuario.valid" class="error-message">
+        Rellene todos los campos correctamente.
+      </div>
+
+      <button type="submit" [disabled]="!agregarUsuario.valid">Aceptar</button>
+    </div>
+  </form>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>

@@ -1,0 +1,42 @@
+<div class="containerUsers" *ngIf="!loading">
+  <p>
+    <i class="fas fa-users btn clientes"></i>
+    <button (click)="AgregarUsuario()" class="fas fa-user-plus btn agregar">
+      agregar usuario
+    </button>
+  </p>
+
+  <table>
+    <thead class="encabezadoTabla">
+      <tr>
+        <th>Nombres y Apellidos</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let usuario of listaUsuarios"> -->
+
+      <tr *ngFor="let u of listaUsuarios$ | async">
+        <td>{{ u.nombre }}, {{ u.apellido }}</td>
+        <td>{{ u.email }}</td>
+        <td>
+          <!-- <button
+            (click)="editarUsuario(u.usuarioID)"
+            class="far fa-edit btn editar"
+          ></button> -->
+          <button
+            [routerLink]="['/editUser/', u.usuarioID]"
+            class="far fa-edit btn editar"
+          ></button>
+          <button
+            (click)="eliminarUsuario(u.usuarioID)"
+            class="fas fa-trash btn eliminar"
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-spinner *ngIf="loading"></app-spinner>

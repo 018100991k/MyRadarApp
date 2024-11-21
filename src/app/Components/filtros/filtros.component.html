@@ -1,0 +1,388 @@
+<div *ngIf="mostrarInformacion">
+  <div class="busqueda">
+    <input
+      type="text"
+      id="campoBusqueda"
+      placeholder="Ingrese contenido a buscar"
+      class="space"
+    />
+    <button (click)="buscar()" class="space">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+    <button (click)="resetCampos()" class="space">
+      <i class="fa-solid fa-arrow-rotate-left"></i>
+    </button>
+  </div>
+
+  <div class="filtrosContainer">
+    <div class="seleccionables">
+      <label for="codigoDeAgencia">codigo de agencia</label>
+      <select id="codigoDeAgencia">
+        <option value="" [disabled]="true">seleccione 1-10</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+
+      <label for="moneda">moneda</label>
+      <select id="moneda">
+        <option value="" [disabled]="true">seleccione soles / dolares</option>
+        <option value="d">d (dolares)</option>
+        <option value="s">s (soles)</option>
+      </select>
+
+      <label for="riesgo credito">riesgo credito</label>
+      <select id="riesgo credito">
+        <option value="" [disabled]="true">seleccione riesgo credito</option>
+        <option value="deficiente">deficiente</option>
+        <option value="dudoso">dudoso</option>
+        <option value="normal">normal</option>
+        <option value="perdida">perdida</option>
+        <option value="potencial">potencial</option>
+      </select>
+
+      <label for="grupoderiesgo">grupo de riesgo</label>
+      <select id="grupoderiesgo">
+        <option value="" [disabled]="true">seleccione grupo de riesgo</option>
+        <option value="deficiente">deficiente</option>
+        <option value="dudoso">dudoso</option>
+        <option value="normal">normal</option>
+        <option value="perdida">perdida</option>
+        <option value="potencial">potencial</option>
+      </select>
+
+      <label for="analista">analista</label>
+      <select id="analista">
+        <option value="" [disabled]="true">seleccione analista</option>
+        <option value="analista1">analista1</option>
+        <option value="analista2">analista2</option>
+        <option value="analista3">analista3</option>
+        <option value="analista4">analista4</option>
+        <option value="analista5">analista5</option>
+      </select>
+
+      <label for="recuperador">recuperador</label>
+      <select id="recuperador">
+        <option value="" [disabled]="true">seleccione recuperador</option>
+        <option value="recuperador1">recuperador1</option>
+        <option value="recuperador2">recuperador2</option>
+        <option value="recuperador3">recuperador3</option>
+        <option value="recuperador4">recuperador4</option>
+        <option value="recuperador5">recuperador5</option>
+      </select>
+
+      <label for="sexo">sexo</label>
+      <select id="sexo">
+        <option value="" [disabled]="true">seleccione sexo</option>
+        <option value="m">masculino</option>
+        <option value="f">femenino</option>
+      </select>
+
+      <label for="departamento">departamento</label>
+      <select id="departamento">
+        <option value="" [disabled]="true">seleccione departamento</option>
+        <option value="apurimac">apurimac</option>
+        <option value="arequipa">arequipa</option>
+        <option value="cusco">cusco</option>
+        <option value="madre de dios">madre de dios</option>
+      </select>
+
+      <label for="provincia">provincia</label>
+      <select id="provincia">
+        <option value="" [disabled]="true">seleccione provincia</option>
+        <option value="abancay">abancay</option>
+        <option value="anta">anta</option>
+        <option value="arequipa">arequipa</option>
+        <!-- otras opciones aquí -->
+      </select>
+
+      <label for="distrito">distrito</label>
+      <select id="distrito">
+        <option value="" [disabled]="true">seleccione distrito</option>
+        <option value="abancay">abancay</option>
+        <option value="anta">anta</option>
+        <option value="arequipa">arequipa</option>
+      </select>
+
+      <label for="empresa">empresa</label>
+      <select id="empresa">
+        <option value="" [disabled]="true">seleccione empresa</option>
+        <option value="andina sindicato">andina sindicato</option>
+        <option value="cooperativa santo domingo de guzman">
+          cooperativa santo domingo de guzman
+        </option>
+        <!-- otras opciones aquí -->
+      </select>
+
+      <label for="riesgoanterior">riesgo anterior</label>
+      <select id="riesgoanterior">
+        <option value="" [disabled]="true">seleccione riesgo anterior</option>
+        <option value="deficiente">deficiente</option>
+        <option value="dudoso">dudoso</option>
+        <option value="normal">normal</option>
+        <option value="potencial">potencial</option>
+      </select>
+
+      <label for="destino">destino</label>
+      <select id="destino">
+        <option value="" [disabled]="true">seleccione destino</option>
+        <option value="actividades inmobiliarias empresariales y de alquiler">
+          actividades inmobiliarias empresariales y de alquiler
+        </option>
+        <option value="activo">activo</option>
+        <!-- otras opciones aquí -->
+      </select>
+
+      <label for="forma de pago">forma de pago</label>
+      <select id="forma de pago">
+        <option value="" [disabled]="true">seleccione forma de pago</option>
+        <option value="convenio">convenio</option>
+        <option value="directo">directo</option>
+      </select>
+
+      <label for="estadodecredito">estado de credito</label>
+      <select id="estadodecredito">
+        <option value="" [disabled]="true">seleccione estado de credito</option>
+        <option value="judicial">judicial</option>
+        <option value="vencido">vencido</option>
+        <option value="vigente">vigente</option>
+      </select>
+
+      <label for="actividadEconomica">actividad economica</label>
+      <select id="actividadEconomica">
+        <option value="" [disabled]="true">
+          seleccione actividad economica
+        </option>
+        <option value="agricultura">agricultura</option>
+        <option value="alquiler">alquiler</option>
+        <!-- otras opciones aquí -->
+      </select>
+
+      <label for="tipodesocio">tipo de socio</label>
+      <select id="tipodesocio">
+        <option value="" [disabled]="true">seleccione tipo de socio</option>
+        <option value="campaña">campaña</option>
+        <option value="campaña">exclusivo</option>
+        <option value="campaña">nuevo</option>
+        <option value="campaña">recurrente</option>
+        <option value="campaña">tasa negociable</option>
+      </select>
+    </div>
+
+    <div class="checkeables">
+      <div class="checkbox-container">
+        <input type="checkbox" id="nombres" value="nombres del asociado" />
+        <label for="nombres">nombres</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="#cuenta" value="#cuenta" />
+        <label for="#cuenta"># de cuenta</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="pagare" value="pagare" />
+        <label for="pagare">codigo de pagare</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="otorga" value="otorga" />
+        <label for="otorga">otorga</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="prestamo" value="prestamo" />
+        <label for="prestamo">prestamo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="nombreDePrestamo" value="nombreDePrestamo" />
+        <label for="nombreDePrestamo">nombre De Prestamo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="producto" value="producto" />
+        <label for="producto">producto</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="montoPrestamo" value="montoPrestamo" />
+        <label for="montoPrestamo">monto prestamo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="saldoPrestamo" value="saldoPrestamo" />
+        <label for="saldoPrestamo">saldo prestamo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="#DeDias" value="#DeDias" />
+        <label for="#DeDias"># De Días</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="excesoDeDeficit" value="excesoDeDeficit" />
+        <label for="excesoDeDeficit">exceso De Deficit</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="saldoVencido" value="saldoVencido" />
+        <label for="saldoVencido">saldo Vencido</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="totalDeGarantias" value="totalDeGarantias" />
+        <label for="totalDeGarantias">total De Garantias</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="fechaDeUltimoPago"
+          value="fechaDeUltimoPago"
+        />
+        <label for="fechaDeUltimoPago">fecha del ultimo oago</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="fechaDeAprobacion"
+          value="fechaDeAprobacion"
+        />
+        <label for="fechaDeAprobacion">fecha de aprobacion</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="plazo" value="plazo" />
+        <label for="plazo">plazo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="pagadas" value="pagadas" />
+        <label for="pagadas">pagadas</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="pendientes" value="pendientes" />
+        <label for="pendientes">pendientes</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="atrasadas" value="atrasadas" />
+        <label for="atrasadas">atrasadas</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="tasaDeInteres" value="tasaDeInteres" />
+        <label for="tasaDeInteres">tasa de interes</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="fechaDeVencimiento"
+          value="fechaDeVencimiento"
+        />
+        <label for="fechaDeVencimiento">fecha de vencimiento</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="CSexo" value="CSexo" />
+        <label for="CSexo">sexo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="edad" value="edad" />
+        <label for="edad">edad</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="direccion" value="direccion" />
+        <label for="direccion">direccion</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="telefono" value="telefono" />
+        <label for="telefono">teléfono</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="fechaDeNacimiento"
+          value="fechaDeNacimiento"
+        />
+        <label for="fechaDeNacimiento">fecha de nacimiento</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="dni" value="dni" />
+        <label for="dni">dni</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="cuotaMensual" value="cuotaMensual" />
+        <label for="cuotaMensual">cuota Mensual</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="formaDePago" value="formaDePago" />
+        <label for="formaDePago">forma de pago</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="estadoDeCredito" value="estadoDeCredito" />
+        <label for="estadoDeCredito">estado de credito</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="aporte" value="aporte" />
+        <label for="aporte">aporte</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="idprestamo" value="idprestamo" />
+        <label for="idprestamo">id de prestamo</label>
+      </div>
+
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="codigoDeRecuperador"
+          value="codigoDeRecuperador"
+        />
+        <label for="codigoDeRecuperador">código de recuperador</label>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Utiliza *ngIf para mostrar u ocultar la información y los gráficos -->
+
+<div class="contenedorGraficos" *ngIf="!mostrarInformacion">
+  <!-- Agrega botones para seleccionar el tipo de gráfico -->
+  <div class="contenedorOpciones">
+    <button (click)="mostrarGraficos('PieChart')">Pie Chart</button>
+    <button (click)="mostrarGraficos('BarChart')">Bar Chart</button>
+    <button (click)="mostrarGraficos('ColumnChart')">Column Chart</button>
+    <button (click)="mostrarGraficos('LineChart')">Line Chart</button>
+    <button (click)="mostrarGraficos('AreaChart')">Area Chart</button>
+    <button (click)="mostrarGraficos('ScatterChart')">Scatter Chart</button>
+    <button (click)="mostrarGraficos('SteppedAreaChart')">
+      Stepped Area Chart
+    </button>
+    <button (click)="mostrarGraficos('ComboChart')">Combo Chart</button>
+    <button (click)="mostrarGraficos('Histogram')">Histogram</button>
+    <button (click)="mostrarGraficos('GeoChart')">GeoChart</button>
+  </div>
+  <!-- Contenedor para los gráficos de Google Charts -->
+  <div class="grafico" id="grafico"></div>
+</div>

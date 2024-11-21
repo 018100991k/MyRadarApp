@@ -1,0 +1,124 @@
+*,
+body {
+  /* resetear valores por defecto */
+  margin: 0;
+  padding: 0;
+
+  /* efectos */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out,
+    transform 0.3s ease-in-out;
+
+  /* centrar */
+  font-size: 4vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  justify-self: center;
+
+  /* quitar efectos */
+  list-style: none;
+  text-decoration: none;
+
+  user-select: none; /* Evita la selección de contenido */
+  overflow: hidden; /* Evita el scroll */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+}
+
+.c-Rojo {
+  color: red;
+}
+.c-Blanco {
+  color: white;
+}
+.subT * {
+  font-size: 6vh;
+  margin-top: 2vh;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url("https://i.imgur.com/lzJ2u1F.jpeg");
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: grid;
+  grid-template-rows: 60vh 20vh 10vh 10vh;
+}
+
+.logo {
+  height: 30vh;
+  justify-self: end;
+}
+.stars {
+  height: 10vh;
+  padding-bottom: 1vh;
+}
+
+.btn {
+  font-size: 5vh;
+  padding: 1vh;
+  border: 1px solid black;
+  background: red;
+  border-radius: 1vh;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: end;
+  justify-self: end;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #000;
+  color: #fff;
+  transform: scale(1.3); /* Scale on hover */
+}
+
+a {
+  color: #e3d1a3;
+}
+
+a:hover {
+  color: #000;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  /* border-radius: 2vh; */
+}
+
+/* Media Queries para diferentes dispositivos */
+@media (max-width: 768px) {
+  /* Tablets en posición vertical y móviles grandes */
+
+  .logo {
+    height: 25vh;
+  }
+  .btn {
+    font-size: 4vh;
+    margin-right: 2vh;
+  }
+  .subT span {
+    font-size: 3vh;
+  }
+  .stars {
+    height: 10vh;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Teléfonos móviles */
+  .container {
+    grid-template-rows: 45vh 20vh 10vh 10vh;
+  }
+  .logo {
+    height: 20vh;
+  }
+  .btn {
+    font-size: 3vh;
+    margin-right: 2vh;
+  }
+  .subT span {
+    font-size: 2.5vh;
+  }
+}

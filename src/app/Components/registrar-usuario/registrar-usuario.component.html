@@ -1,0 +1,132 @@
+<div class="wrapper" *ngIf="!loading">
+  <img class="imgContrasena" src="https://i.imgur.com/mhgnghB.png" alt="" />
+  <div class="login">Registrarse</div>
+
+  <form
+    class="login-form"
+    [formGroup]="registrarUsuario"
+    (ngSubmit)="RegistrarUsuario()"
+  >
+    <!-- email -->
+    <div class="input-container">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="input-field"
+        placeholder=""
+        autocomplete="off"
+        formControlName="email"
+        required
+      />
+      <label for="email" class="placeholder">Correo Electrónico</label>
+      <!-- Mostrar mensaje de error específico para email -->
+      <div
+        *ngIf="
+          registrarUsuario.get('email')?.invalid &&
+          registrarUsuario.get('email')?.dirty
+        "
+        class="error-General"
+      >
+        {{ getErrorMessage("email") }}
+      </div>
+    </div>
+
+    <!-- fin email -->
+
+    <!--  password -->
+    <div class="input-container">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="input-field"
+        placeholder=""
+        formControlName="password"
+        #passwordInput
+        required
+      />
+
+      <label for="password" class="placeholder">Contraseña</label>
+      <!-- Botón de alternancia de visibilidad -->
+
+      <img
+        src="https://i.imgur.com/oQbFS9n.png"
+        id="togglePassword"
+        class="mostrarOcultar"
+        alt="Mostrar contraseña"
+        (click)="TogglePasswordVisibility(passwordInput)"
+      />
+
+      <!-- Mostrar mensaje de error específico para password -->
+      <div
+        *ngIf="
+          registrarUsuario.get('password')?.invalid &&
+          registrarUsuario.get('password')?.dirty
+        "
+        class="error-General"
+      >
+        {{ getErrorMessage("password") }}
+      </div>
+    </div>
+
+    <!-- fin password -->
+
+    <!-- repeatPassword -->
+    <div class="input-container">
+      <input
+        type="password"
+        id="repeatPassword"
+        name="repeatPassword"
+        class="input-field"
+        placeholder=""
+        formControlName="repeatPassword"
+        required
+      />
+      <label for="repeatPassword" class="placeholder">Repetir Contraseña</label>
+      <!-- Mensaje de error específico para repeatPassword -->
+      <!-- <div
+        *ngIf="
+          registrarUsuario.hasError('passwordMismatch') &&
+          (registrarUsuario.get('password')?.dirty ||
+            registrarUsuario.get('repeatPassword')?.dirty)
+        "
+      >
+        <p class="error-General">Las contraseñas no coinciden.</p>
+      </div> -->
+      <!-- Mostrar mensaje de error específico para repeatPassword -->
+      <div
+        *ngIf="
+          registrarUsuario.get('repeatPassword')?.invalid &&
+          registrarUsuario.get('repeatPassword')?.dirty
+        "
+        class="error-General"
+      >
+        {{ getErrorMessage("repeatPassword") }}
+      </div>
+    </div>
+    <!-- fin repeatPassword -->
+
+    <!-- Mostrar mensaje de error si el formulario no está completo -->
+    <!-- <div *ngIf="!isBotonHabilitado" class="error-message"> -->
+    <div *ngIf="!registrarUsuario.valid" class="error-message">
+      Rellene todos los campos correctamente.
+    </div>
+    <div class="button-container">
+      <!-- 
+      <button type="submit" [disabled]="!isBotonHabilitado">aceptar</button -->
+      <button type="submit" [disabled]="!registrarUsuario.valid">
+        aceptar
+      </button>
+    </div>
+  </form>
+  <div class="additional-links">
+    <p>
+      al registrarse confirma haber leido los
+      <a routerLink="/iniciar-sesion">terminos y condiciones </a> ¿los acepta?
+    </p>
+    <p><a routerLink="/login">ya tengo una cuenta</a></p>
+  </div>
+</div>
+
+<app-spinner *ngIf="loading"></app-spinner>

@@ -1,0 +1,18 @@
+<p>administrar-archivos works!</p>
+<input
+  type="file"
+  accept=".png, .jpg, .jpeg, .pdf "
+  id="files"
+  class="btnSubir"
+  multiple
+  (change)="CargarArchivos($event)"
+/>
+<label for="files"><i class="fas fa-upload"></i></label>
+
+<img src="{{ imagenes[0] }}" alt="imagen subida" />
+<p>subida de imagenes</p>
+<div class="contenedor-imagenes">
+  <div *ngFor="let imagen of imagenes">
+    <img [src]="imagen" alt="imagen subida" width="100 " />
+  </div>
+</div>

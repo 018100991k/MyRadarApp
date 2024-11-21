@@ -1,0 +1,26 @@
+<!-- <div class="" *ngIf="!loading">
+  <p>dashboard works!</p>
+  <button class="logout" (click)="logout()">cerrar sesion</button>
+  <br />
+  <button routerLink="admin">administrar usuarios</button>
+
+  <p>bienvenido {{ dataUser?.email }}</p>
+</div>
+
+ -->
+
+<!-- <div class="containerInicio">
+  <app-navbar class="navbar"></app-navbar> -->
+<div
+  class="content"
+  [style.gridTemplateColumns]="contentGridColumns"
+  *ngIf="!loading"
+>
+  <app-sidebar class="sidebar"></app-sidebar>
+  <div class="container">
+    <app-navbar class="navbar" *ngIf="showNavbar"></app-navbar>
+    <router-outlet class="router"></router-outlet>
+  </div>
+</div>
+<!-- </div> -->
+<app-spinner *ngIf="loading"></app-spinner>

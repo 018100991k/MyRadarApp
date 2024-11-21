@@ -1,0 +1,77 @@
+<!-- simulador-cuotas.component.html -->
+
+<button class="btn regresar" routerLink="/inicio">regresar</button>
+
+<div class="simulator-container">
+  <p class="titulo">Simulador de Cuotas</p>
+  <div class="evaluar">
+    <div class="container">
+      <label for="loanAmount">Monto del Préstamo: $</label>
+      <br />
+      <input
+        class="montoPrestamo"
+        type="number"
+        id="loanAmount"
+        min="1000"
+        step="50"
+        placeholder="Mínimo: $1000"
+        [(ngModel)]="loanAmount"
+        (input)="updateMonthlyPayment()"
+      />
+    </div>
+    <div class="container">
+      <label for="loanTerm"
+        >Plazo del Préstamo (meses):
+        <br />
+        <span class="termValue">{{ loanTerm }}</span></label
+      >
+      <input
+        type="range"
+        id="loanTerm"
+        min="6"
+        max="36"
+        value="12"
+        [(ngModel)]="loanTerm"
+        (input)="updateMonthlyPayment()"
+      />
+    </div>
+
+    <div class="container">
+      <label for="monthlyPayment"
+        >Cuota Mensual: $<span class="monthlyPaymentValue">{{
+          monthlyPayment
+        }}</span></label
+      >
+      <!-- <input
+        type="text"
+        id="monthlyPayment"
+        readonly
+        disabled
+        class="input-disabled"
+        [value]="monthlyPayment"
+      /> -->
+    </div>
+    <button class="btn" (click)="generateSchedule()">Generar Cronograma</button>
+  </div>
+
+  <div class="schedule-container">
+    <table class="schedule-table">
+      <tr>
+        <th>Mes</th>
+        <th>Fecha de Pago</th>
+        <th>Cuota</th>
+        <th>Interés</th>
+        <th>Principal</th>
+        <th>Saldo Restante</th>
+      </tr>
+      <tr *ngFor="let row of scheduleData">
+        <td>{{ row.month }}</td>
+        <td>{{ row.date }}</td>
+        <td>{{ row.payment }}</td>
+        <td>{{ row.interest }}</td>
+        <td>{{ row.principal }}</td>
+        <td>{{ row.remainingBalance }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
